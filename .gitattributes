@@ -1,2 +1,60 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+//создание структуры под контакт
+struct Contacts {
+	string surname;
+	string name;
+	string date_of_birthday;
+	string company;
+	string email;
+};
+
+//создание функции вывода информации о контакте
+void printInformation(Contacts contacts) {
+	cout << "surname: " << contacts.surname << endl;
+	cout << "name: " << contacts.name << endl;
+	cout << "date of birthday: " << contacts.date_of_birthday << endl;
+	cout << "company: " << contacts.company << endl;
+	cout << "email: " << contacts.email << endl;
+}
+
+
+int main(){
+	int counter = 0, num, something;
+	
+
+	//создание динамического массива для структуры
+	cout << "How much contacts you want add: "; cin >> num;
+	Contacts *array = new Contacts[num];
+
+	//заполнение динамического массива
+	for (int i = 0; i < num; i++) {
+		cin.ignore();
+		cout << "Enter surname contact: ";
+		getline(cin, array[i].surname);
+		cout << "Enter name contact: ";
+		cin >> array[i].name;
+		cout << "Enter date of birthday: ";
+		cin >> array[i].date_of_birthday;
+		cout << "Enter which company the contact works: ";
+		cin >> array[i].company;
+		cout << "Enter contact e-mail: ";
+		cin >> array[i].email;
+		cout << endl;
+	}
+
+	//вывод введенных данных о контакте
+	for (int j = 0; j < num; j++) {
+		cout << "Surname contact: " << array[j].surname << endl;
+		cout << "Name contact: " << array[j].name << endl;
+		cout << "Date of birthday contact: " << array[j].date_of_birthday << endl;
+		cout << "Company contact: " << array[j].company << endl;
+		cout << "E-mail contact: " << array[j].email << endl;
+	}
+	delete[]array;
+
+return 0;
+}
